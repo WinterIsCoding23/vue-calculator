@@ -6,3 +6,6 @@
     @apply h-screen bg-black text-gray-50
 }
 
+.buttons{
+    @apply grid grid-rows-5 grid-cols-4 gap-4
+}
