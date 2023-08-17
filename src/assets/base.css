@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .calculator{
-    @apply h-screen bg-black text-gray-50
+    @apply h-screen bg-black text-gray-50 flex flex-col justify-center items-center
 }
 
 .buttons{
