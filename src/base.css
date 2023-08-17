@@ -11,7 +11,7 @@ body{
 }
 
 .calculator{
-    @apply w-[400px] h-[600px] border-2 border-teal-600 rounded-md flex flex-col bg-yellow-200
+    @apply w-[400px] h-[600px] border-2 border-teal-600 rounded-md flex flex-col bg-emerald-700
 }
 
 .display{
@@ -44,5 +44,5 @@ body{
   }
 
   button {
-    @apply min-h-[50px] border-2 border-emerald-600 rounded-md bg-amber-600 shadow-xl
+    @apply min-h-[50px] border-2 border-emerald-600 rounded-md bg-amber-600 shadow-xl hover:brightness-75
   }
