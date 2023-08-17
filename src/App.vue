@@ -19,6 +19,8 @@
   <button type="button" value="">3</button>
   <button type="button" value="">+</button>
   <button type="button" value="">0</button>
+  <button type="button" value="">.</button>
+  <button type="button" value="">=</button>
 </template>
 
 <style></style>
