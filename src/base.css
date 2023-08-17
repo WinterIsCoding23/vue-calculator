@@ -44,5 +44,5 @@ body{
   }
 
   button {
-    @apply min-h-[50px] border-2 border-emerald-600 rounded-md bg-amber-600 shadow-xl hover:brightness-75
+    @apply min-h-[50px] border-2 border-emerald-600 rounded-md bg-amber-600 shadow-xl hover:brightness-75 active:-translate-y-1
   }
