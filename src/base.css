@@ -11,7 +11,7 @@ body{
 }
 
 .calculator{
-    @apply w-[400px] h-[600px] border-2 border-teal-600 rounded-md flex flex-col 
+    @apply w-[400px] h-[600px] border-2 border-teal-600 rounded-md flex flex-col bg-yellow-200
 }
 
 .display{
@@ -19,11 +19,11 @@ body{
 }
 
 .button-field{
-    @apply p-4 grid grid-rows-5 grid-cols-4 gap-4 grow
+    @apply text-slate-950 p-4 grid grid-rows-5 grid-cols-4 gap-4 grow
 }
 
 .operator{
-  @apply bg-slate-700
+  @apply text-white bg-slate-700
 }
 
 /* Display-Scrollbar */
