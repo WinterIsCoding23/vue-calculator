@@ -18,7 +18,7 @@ body{
     @apply max-w-full min-h-[200px] border-solid border-2 border-indigo-500/50 rounded-md flex justify-end items-center
 }
 
-.buttons{
+.button-field{
     @apply grid grid-rows-5 grid-cols-4 gap-4 grow
 }
 
@@ -39,6 +39,6 @@ body{
     background: #555;
   }
 
-  .button{
+  button{
     @apply min-h-[50px] border-2 border-emerald-600 rounded-md
   }
