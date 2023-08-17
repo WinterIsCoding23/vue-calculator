@@ -2,8 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+    box-sizing: border-box;     
+}
+
+body{
+    @apply m-0 min-h-screen bg-black text-gray-50 flex flex-col justify-center items-center
+}
+
 .calculator{
-    @apply h-screen bg-black text-gray-50 flex flex-col justify-center items-center
+    @apply w-[400px] border-2 border-teal-600
 }
 
 .buttons{
