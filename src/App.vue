@@ -1,9 +1,7 @@
-<script></script>
-
 <template>
   <div class="calculator">
     <div class="display ">
-      <h1 class="h-min bg-slate-500 text-7xl font-light overflow-x-auto rounded-md p-4">1234567890</h1>  
+      <h1 class="h-min text-7xl font-light overflow-x-auto rounded-md p-4">{{ current | 0 }}</h1>  
     </div>
     <div class="button-field">
       
@@ -34,5 +32,16 @@
     </div>
   </div>
 </template>
+
+<script>
+  export default {   
+      data() {
+        return{
+          previous: null,
+          current: "",
+        }
+      }    
+  }
+</script>
 
 <style></style>
