@@ -1,26 +1,40 @@
 <script></script>
 
 <template>
-  <h1>1234567890</h1>
-  <button type="button" value="">C</button>
-  <button type="button" value="">+/-</button>
-  <button type="button" value="">%</button>
-  <button type="button" value="">/</button>
-  <button type="button" value="">7</button>
-  <button type="button" value="">8</button>
-  <button type="button" value="">9</button>
-  <button type="button" value="">*</button>
-  <button type="button" value="">4</button>
-  <button type="button" value="">5</button>
-  <button type="button" value="">6</button>
-  <button type="button" value="">-</button>
-  <button type="button" value="">1</button>
-  <button type="button" value="">2</button>
-  <button type="button" value="">3</button>
-  <button type="button" value="">+</button>
-  <button type="button" value="">0</button>
-  <button type="button" value="">.</button>
-  <button type="button" value="">=</button>
+  <div class="calculator">
+    <h1 class="border-solid border-2 border-indigo-500/50 rounded-md">1234567890</h1>  
+    <div class="buttons">
+      <div class="row">
+        <button type="button" value="">C</button>
+        <button type="button" value="">%</button>
+        <button type="button" value="">/</button>
+        <button type="button" value="">*</button>
+      </div>
+      <div class="row">
+        <button type="button" value="">7</button>
+        <button type="button" value="">8</button>
+        <button type="button" value="">9</button>
+        <button type="button" value="">-</button>
+      </div>
+      <div class="row">
+        <button type="button" value="">4</button>
+        <button type="button" value="">5</button>
+        <button type="button" value="">6</button>
+        <button type="button" value="">+</button>
+      </div>
+      <div class="row">
+        <button type="button" value="">1</button>
+        <button type="button" value="">2</button>
+        <button type="button" value="">3</button>
+        <button type="button" value="">=</button>
+      </div>
+      <div class="row">
+        <button type="button" value="">0</button>
+        <button type="button" value="">+/-</button>
+        <button type="button" value="">.</button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style></style>
