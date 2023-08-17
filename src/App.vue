@@ -27,7 +27,7 @@
       
         <button @click="display(0)" type="button" value="">0</button>
         <button @click="negative" type="button" class="button" value="">+/-</button>
-        <button type="button" class="button" value="">.</button>
+        <button @click="period" type="button" class="button" value="">.</button>
       
     </div>
   </div>
@@ -64,6 +64,13 @@
           this.isNegative = true;
           }
         console.log("isNegative", this.isNegative);
+        },
+        period(){
+          if(this.numberClicked){
+            this.current = `${this.current}.`;
+          } else {
+            this.current = 0+".";
+          }
         }
       }    
   }
