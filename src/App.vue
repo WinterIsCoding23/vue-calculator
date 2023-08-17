@@ -25,7 +25,7 @@
         <button type="button" value="">1</button>
         <button type="button" value="">2</button>
         <button type="button" value="">3</button>
-        <button type="button" class="row-span-2" value="">=</button>      
+        <button type="button" class="row-span-2 border-2 border-orange-600" value="">=</button>      
       
         <button type="button" value="">0</button>
         <button type="button" value="">+/-</button>
