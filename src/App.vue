@@ -2,8 +2,8 @@
 
 <template>
   <div class="calculator">
-    <div class="display">
-      <h1 class="text-8xl font-light overflow-x-auto">1234567890</h1>  
+    <div class="display ">
+      <h1 class="h-min bg-slate-500 text-7xl font-light overflow-x-auto rounded-md px-4">1234567890</h1>  
     </div>
     <div class="button-field">
       
