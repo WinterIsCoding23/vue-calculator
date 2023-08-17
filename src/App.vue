@@ -2,7 +2,9 @@
 
 <template>
   <div class="calculator">
-    <h1 class="border-solid border-2 border-indigo-500/50 rounded-md">1234567890</h1>  
+    <div class="border-solid border-2 border-indigo-500/50 rounded-md flex justify-end ">
+      <h1 class="overflow-x-auto">1234567890</h1>  
+    </div>
     <div class="buttons">
       
         <button type="button" value="">C</button>
