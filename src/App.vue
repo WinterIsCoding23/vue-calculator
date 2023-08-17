@@ -26,7 +26,7 @@
         <button type="button" class="min-h-[50px] row-span-2 border-2 border-orange-600 rounded-md bg-red-600 text-white" value="">=</button>      
       
         <button @click="display(0)" type="button" value="">0</button>
-        <button type="button" class="button" value="">+/-</button>
+        <button @click="negative" type="button" class="button" value="">+/-</button>
         <button type="button" class="button" value="">.</button>
       
     </div>
@@ -39,13 +39,31 @@
         return{
           previous: null,
           current: "",
+          numberClicked: false,
+          isNegative: false,
         }
       },
       methods: {
         display(number){
-          this.current = number;
+          if(this.isNegative){
+            this.current = -number;
+          } else {
+            this.current = number;
+          }
+          this.numberClicked = true;
           console.log("this.current", this.current);
           console.log("number", number);
+        },
+        negative(){
+          // if already number clicked, then make it negative
+          // ...if this number is negative, then make it positive
+          if (this.numberClicked){
+            this.current = -this.current;
+            this.isNegative = true;
+          } else {
+          this.isNegative = true;
+          }
+        console.log("isNegative", this.isNegative);
         }
       }    
   }
