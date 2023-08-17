@@ -45,32 +45,46 @@
       },
       methods: {
         display(number){
-          if(this.isNegative){
+          if(this.isNegative && this.previous !== null){
+            this.current = `${this.previous}${number}`;
+          } else if(this.isNegative && this.previous === null){
             this.current = -number;
+          } else if(!this.isNegative && this.previous !== null){
+            this.current = `${this.previous}${number}`;
           } else {
             this.current = number;
           }
-          this.numberClicked = true;
+          this.numberClicked = true;  
+          this.previous = this.current;
+
           console.log("this.current", this.current);
-          console.log("number", number);
         },
         negative(){
           // if already number clicked, then make it negative
           // ...if this number is negative, then make it positive
-          if (this.numberClicked){
-            this.current = -this.current;
-            this.isNegative = true;
-          } else {
-          this.isNegative = true;
-          }
-        console.log("isNegative", this.isNegative);
+          // if (this.numberClicked){
+          //   this.current = -this.current;
+          //   this.isNegative = true;
+          // } else {
+          // this.isNegative = true;
+          // }
+          console.log("previous before", this.previous);
+          console.log("isNegative before", this.isNegative);
+          console.log("current before", this.current);
+          this.previous ? this.current = -1*this.previous : this.isNegative === true;
+          console.log("previous after", this.previous);
+          console.log("isNegative after", this.isNegative);
+          console.log("current after", this.current);
         },
         period(){
           if(this.numberClicked){
-            this.current = `${this.current}.`;
+            this.previous = `${this.current}.`;
           } else {
-            this.current = 0+".";
+            this.previous = 0+".";
+            // this.current = 0+".";
           }
+          console.log("this.current period", this.current);
+          console.log("this.previous period", this.previous);
         }
       }    
   }
