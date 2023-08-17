@@ -7,7 +7,7 @@
 }
 
 body{
-    @apply m-0 min-h-screen bg-black text-gray-50 flex flex-col justify-center items-center
+    @apply m-0 min-h-screen bg-sky-900 text-gray-50 flex flex-col justify-center items-center
 }
 
 .calculator{
@@ -15,7 +15,7 @@ body{
 }
 
 .display{
-    @apply max-w-full min-h-[200px] border-solid border-2 border-indigo-500/50 rounded-md p-4 flex justify-end items-center
+    @apply max-w-full min-h-[200px] bg-black border-solid border-2 border-indigo-500/50 rounded-md p-4 flex justify-end items-center
 }
 
 .button-field{
@@ -44,5 +44,5 @@ body{
   }
 
   button {
-    @apply min-h-[50px] border-2 border-emerald-600 rounded-md bg-amber-600
+    @apply min-h-[50px] border-2 border-emerald-600 rounded-md bg-amber-600 shadow-xl
   }
