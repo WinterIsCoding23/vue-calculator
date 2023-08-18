@@ -68,14 +68,8 @@
           }
         },
         period(){
-          if(this.numberClicked){
-            this.previous = `${this.current}.`;
-          } else {
-            this.previous = 0+".";
-            // this.current = 0+".";
-          }
-          console.log("this.current period", this.current);
-          console.log("this.previous period", this.previous);
+          this.current.toString().split("").includes(".") ? this.current : this.current = `${this.current}.`;  
+          this.previous = this.current;
         }
       }    
   }
