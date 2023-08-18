@@ -54,9 +54,18 @@
           this.previous = this.current;
 
           console.log("this.current", this.current);
+          console.log("typeof this.current", typeof this.current);
         },
         negative(){
-          
+          if(this.isNegative){
+            this.current = this.current.split("-")[1];
+            this.isNegative = false;
+            this.previous = this.current;
+          } else {
+            this.current = `-${this.current}`;
+            this.isNegative = true;
+            this.previous = this.current;
+          }
         },
         period(){
           if(this.numberClicked){
