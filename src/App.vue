@@ -5,7 +5,7 @@
     </div>
     <div class="button-field">
       
-        <button type="button" class="operator" value="">C</button>
+        <button @click="delete" type="button" class="operator" value="">C</button>
         <button type="button" class="operator" value="">%</button>
         <button @click="operate('/')" type="button" class="operator" value="/">÷</button>
         <button @click="operate('*')" type="button" class="operator" value="*">×</button>     
@@ -77,6 +77,9 @@
           this.previous = this.current;
           this.numberClicked = false;
         } return;
+        },
+        delete(){
+          this.current = this.current.toString().split("").pop();
         },
         calculate(){
           this.current = eval(this.current);
