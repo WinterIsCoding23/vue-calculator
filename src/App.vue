@@ -7,18 +7,18 @@
       
         <button type="button" class="operator" value="">C</button>
         <button type="button" class="operator" value="">%</button>
-        <button type="button" class="operator" value="/">÷</button>
-        <button type="button" class="operator" value="*">×</button>     
+        <button @click="operate('/')" type="button" class="operator" value="/">÷</button>
+        <button @click="operate('*')" type="button" class="operator" value="*">×</button>     
       
         <button @click="display(7)" type="button" value="7">7</button>
         <button @click="display(8)" type="button" value="">8</button>
         <button @click="display(9)" type="button" value="">9</button>
-        <button type="button" class="operator" value="">+</button>      
+        <button @click="operate('+')" type="button" class="operator" value="+">+</button>      
       
         <button @click="display(4)" type="button" value="">4</button>
         <button @click="display(5)" type="button" value="">5</button>
         <button @click="display(6)" type="button" value="">6</button>
-        <button type="button" class="operator" value="">-</button>      
+        <button @click="operate('-')" type="button" class="operator" value="">-</button>      
       
         <button @click="display(1)" type="button" value="">1</button>
         <button @click="display(2)" type="button" value="">2</button>
@@ -52,9 +52,6 @@
           }
           this.numberClicked = true;  
           this.previous = this.current;
-
-          console.log("this.current", this.current);
-          console.log("typeof this.current", typeof this.current);
         },
         negative(){
           if(this.isNegative){
@@ -70,6 +67,13 @@
         period(){
           this.current.toString().split("").includes(".") ? this.current : this.current = `${this.current}.`;  
           this.previous = this.current;
+        },
+        operate(operator){
+        if(this.numberClicked){
+          this.current += operator;
+          this.previous = this.current;
+          this.numberClicked = false;
+        } return;
         }
       }    
   }
