@@ -23,7 +23,7 @@
         <button @click="display(1)" type="button" value="">1</button>
         <button @click="display(2)" type="button" value="">2</button>
         <button @click="display(3)" type="button" value="">3</button>
-        <button type="button" class="min-h-[50px] row-span-2 border-2 border-orange-600 rounded-md bg-red-600 text-white" value="">=</button>      
+        <button @click="calculate" type="button" class="min-h-[50px] row-span-2 border-2 border-orange-600 rounded-md bg-red-600 text-white" value="">=</button>      
       
         <button @click="display(0)" type="button" value="">0</button>
         <button @click="negative" type="button" class="button" value="">+/-</button>
@@ -41,6 +41,7 @@
           current: "",
           numberClicked: false,
           isNegative: false,
+          result: null,
         }
       },
       methods: {
@@ -52,6 +53,8 @@
           }
           this.numberClicked = true;  
           this.previous = this.current;
+          console.log("this.current", this.current);
+          console.log("this.previous", this.previous);
         },
         negative(){
           if(this.isNegative){
@@ -74,6 +77,10 @@
           this.previous = this.current;
           this.numberClicked = false;
         } return;
+        },
+        calculate(){
+          this.current = eval(this.current);
+          this.previous = this.current;
         }
       }    
   }
