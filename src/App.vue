@@ -6,7 +6,7 @@
     <div class="button-field">
       
         <button @click="reset" type="button" class="operator" value="">C</button>
-        <button type="button" class="operator" value="">%</button>
+        <button @click="percentage" type="button" class="operator" value="">%</button>
         <button @click="operate('/')" type="button" class="operator" value="/">÷</button>
         <button @click="operate('*')" type="button" class="operator" value="*">×</button>     
       
@@ -41,15 +41,23 @@
           current: "",
           numberClicked: false,
           isNegative: false,
+          hasBeenCalculated: false,
           result: null,
         }
       },
       methods: {
         display(number){
-          if(this.previous){
-            this.current = this.previous.toString().concat("", number);
-          } else {
+          if(this.hasBeenCalculated){
+            this.reset();
             this.current = number;
+            this.hasBeenCalculated = false;
+            console.log("hasBeenCalculated", this.hasBeenCalculated);
+          } else{
+            if(this.previous){
+              this.current = this.previous.toString().concat("", number);
+            } else {
+              this.current = number;
+            }
           }
           this.numberClicked = true;  
           this.previous = this.current;
@@ -71,11 +79,17 @@
           this.current.toString().split("").includes(".") ? this.current : this.current = `${this.current}.`;  
           this.previous = this.current;
         },
+        percentage(){
+          this.current = parseInt(this.current)*1/100;
+        },
         operate(operator){
         if(this.numberClicked){
           this.current += operator;
           this.previous = this.current;
           this.numberClicked = false;
+          this.hasBeenCalculated = false;
+          console.log("this.current operate", this.current);
+          console.log("hasBeenCalculated operate", this.hasBeenCalculated)
         } return;
         },
         deleteFunction(){
@@ -88,9 +102,12 @@
           this.previous = null;
         },
         calculate(){
+          // this.current = eval(this.current);
           this.current = eval(this.current);
-          this.previous = this.current; 
-        }
+          this.previous = this.current;
+          this.hasBeenCalculated = true;
+          // this.previous = this.current; 
+        },
       }    
   }
 </script>
