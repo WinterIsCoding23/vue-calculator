@@ -45,12 +45,8 @@
       },
       methods: {
         display(number){
-          if(this.isNegative && this.previous !== null){
-            this.current = `${this.previous}${number}`;
-          } else if(this.isNegative && this.previous === null){
-            this.current = -number;
-          } else if(!this.isNegative && this.previous !== null){
-            this.current = `${this.previous}${number}`;
+          if(this.previous){
+            this.current = this.previous.toString().concat("", number);
           } else {
             this.current = number;
           }
@@ -60,21 +56,7 @@
           console.log("this.current", this.current);
         },
         negative(){
-          // if already number clicked, then make it negative
-          // ...if this number is negative, then make it positive
-          // if (this.numberClicked){
-          //   this.current = -this.current;
-          //   this.isNegative = true;
-          // } else {
-          // this.isNegative = true;
-          // }
-          console.log("previous before", this.previous);
-          console.log("isNegative before", this.isNegative);
-          console.log("current before", this.current);
-          this.previous ? this.current = -1*this.previous : this.isNegative === true;
-          console.log("previous after", this.previous);
-          console.log("isNegative after", this.isNegative);
-          console.log("current after", this.current);
+          
         },
         period(){
           if(this.numberClicked){
