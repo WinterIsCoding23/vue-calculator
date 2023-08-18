@@ -80,6 +80,7 @@
           this.previous = this.current;
         },
         percentage(){
+          // to be fixed: adding % after a calculation
           this.current = parseFloat(this.current)/100;
         },
         operate(operator){
@@ -102,6 +103,7 @@
           this.previous = null;
         },
         calculate(){
+          // to be fixed: replace eval
           this.current = eval(this.current);
           this.previous = this.current;
           this.hasBeenCalculated = true;
