@@ -89,7 +89,7 @@
         },
         calculate(){
           this.current = eval(this.current);
-          this.previous = this.current;
+          this.previous = this.current; 
         }
       }    
   }
