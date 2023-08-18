@@ -102,11 +102,9 @@
           this.previous = null;
         },
         calculate(){
-          // this.current = eval(this.current);
           this.current = eval(this.current);
           this.previous = this.current;
           this.hasBeenCalculated = true;
-          // this.previous = this.current; 
         },
       }    
   }
