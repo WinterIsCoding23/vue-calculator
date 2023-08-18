@@ -80,7 +80,7 @@
           this.previous = this.current;
         },
         percentage(){
-          this.current = parseInt(this.current)*1/100;
+          this.current = parseFloat(this.current)/100;
         },
         operate(operator){
         if(this.numberClicked){
