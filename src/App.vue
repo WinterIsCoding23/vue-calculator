@@ -50,6 +50,12 @@
           calculatorDisplay: "0",
           displayValue: "0",
           isAwaitingInput: false,
+          operator: {
+            "+": (first, second) => first + second,
+            "-": (first, second) => first - second,
+            "/": (first, second) => first / second,
+            "*": (first, second) => first * second,
+          }
         }
       },
       computed: {
@@ -84,6 +90,10 @@
             this.displayValue = `${this.displayValue}.`;
             this.calculatorDisplay = this.displayValue;
           }
+        },
+        operate(operator){
+          this.calculatorDisplay
+          this.displayValue
         },   
       }    
   }
