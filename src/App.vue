@@ -18,7 +18,7 @@
         <button @click="displayNumber('4')" type="button" value="">4</button>
         <button @click="displayNumber('5')" type="button" value="">5</button>
         <button @click="displayNumber('6')" type="button" value="">6</button>
-        <button @click="calculate('-')" type="button" class="operator" value="">-</button>      
+        <button @click="calculate('-')" type="button" class="operator" value="-">-</button>      
       
         <button @click="displayNumber('1')" type="button" value="">1</button>
         <button @click="displayNumber('2')" type="button" value="">2</button>
@@ -68,13 +68,12 @@
           if(this.isAwaitingInput){
             this.calculatorDisplay = number;
             this.isAwaitingInput = false;
-            this.displayValue = this.calculatorDisplay;
           } else {
             this.displayValue = this.calculatorDisplay;
             this.calculatorDisplay =
               this.displayValue === "0" ? number : this.displayValue + number;
-            this.displayValue = this.calculatorDisplay;
           }
+          this.displayValue = this.calculatorDisplay;
         },
         toggleNegative(){          
           this.displayValue = (parseFloat(this.displayValue) * -1).toString();
@@ -90,15 +89,33 @@
         },
         calculate(operator){
           const followingValue = parseFloat(this.calculatorDisplay);
+          // console.log("operator", operator);
+          console.log("FirstfollowingValue", followingValue);
+          // console.log("displayValue", this.displayValue);
           if(this.operatorValue && this.isAwaitingInput){
             this.operatorValue = operator;
+            // console.log("operatorValue", this.operatorValue);            
             return;
-          } else {
-            const calculation = this.operate[operator](this.displayValue, followingValue);
-            console.log("calculation", calculation);
           }
-          this.calculatorDisplay = this.displayValue + operator;
+          
+          if(!this.displayValue){
+            this.displayValue = followingValue;
+          } else {
+            this.displayValue = parseFloat(this.displayValue);
+            this.operatorValue = operator;
+            const calculation = this.operate[ this.operatorValue](this.displayValue, followingValue);
+            console.log("calculation", calculation);
+            // console.log("operator", operator);
+            // console.log("operatorValue", this.operatorValue);            
+            console.log("displayValue", this.displayValue);
+            console.log("followingValue", followingValue);
+            this.calculatorDisplay = calculation;
+            this.displayValue = calculation;
+          }
           this.isAwaitingInput = true;
+          this.operatorValue = operator;
+          console.log("operatorValue", this.operatorValue);            
+          console.log("type of operatorValue", typeof(this.operatorValue));            
         },   
       }    
   }
