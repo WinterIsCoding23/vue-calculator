@@ -69,13 +69,20 @@
               this.displayValue === "0" ? number : this.displayValue + number;
             this.displayValue = this.calculatorDisplay;
             console.log("displayValue", this.displayValue);
+            console.log("calculatorDisplay", this.calculatorDisplay);
             console.log("number", number);
           }
         },
         toggleNegative(){          
-          this.displayValue = (parseInt(this.displayValue) * -1).toString();
+          this.displayValue = (parseFloat(this.displayValue) * -1).toString();
           this.calculatorDisplay = this.displayValue;
-        },        
+        },     
+        period(){
+          this.displayValue = `${this.displayValue}.`;
+          this.calculatorDisplay = this.displayValue;
+          console.log("displayValue", this.displayValue);
+          console.log("calculatorDisplay", this.calculatorDisplay);
+        },   
       }    
   }
 </script>
