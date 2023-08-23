@@ -63,7 +63,6 @@
           // }
           this.calculatorDisplay = `${this.calculatorDisplay}${number}`;
         },
-
         toggleNegative(){  
           this.calculatorDisplay = (parseFloat(this.calculatorDisplay) * -1).toString();       
           // this.displayValue = (parseFloat(this.displayValue) * -1).toString();
@@ -73,7 +72,7 @@
           if(this.calculatorDisplay.includes(".")){
             return;
           } else {
-            this.calculatorDisplay = `${this.displayValue}.`;
+            this.calculatorDisplay = `${this.calculatorDisplay}.`;
           }
           // if (this.displayValue.includes(".")){
           //   return; 
