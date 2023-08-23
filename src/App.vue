@@ -26,7 +26,7 @@
         <button @click="calculate" type="button" class="min-h-[50px] row-span-2 border-2 border-orange-600 rounded-md bg-red-600 text-white" value="">=</button>      
       
         <button @click="displayNumber('0')" type="button" value="">0</button>
-        <button @click="negative" type="button" class="button" value="">+/-</button>
+        <button @click="toggleNegative" type="button" class="button" value="">+/-</button>
         <button @click="period" type="button" class="button" value="">.</button>
       
     </div>
@@ -48,6 +48,7 @@
           result: null,
           // new try:
           calculatorDisplay: "0",
+          displayValue: "0",
           isAwaitingInput: false,
         }
       },
@@ -59,17 +60,22 @@
           if(this.isAwaitingInput){
             this.calculatorDisplay = number;
             this.isAwaitingInput = false;
+            this.displayValue = this.calculatorDisplay;
             console.log("calculatorDisplay", this.calculatorDisplay);
             console.log("number", number);
           } else {
-            const displayValue = this.calculatorDisplay;
+            this.displayValue = this.calculatorDisplay;
             this.calculatorDisplay =
-              displayValue === "0" ? number : displayValue + number;
-            console.log("displayValue", displayValue);
+              this.displayValue === "0" ? number : this.displayValue + number;
+            this.displayValue = this.calculatorDisplay;
+            console.log("displayValue", this.displayValue);
             console.log("number", number);
           }
         },
-        
+        toggleNegative(){          
+          this.displayValue = (parseInt(this.displayValue) * -1).toString();
+          this.calculatorDisplay = this.displayValue;
+        },        
       }    
   }
 </script>
