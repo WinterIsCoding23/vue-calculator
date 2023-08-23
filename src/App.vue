@@ -48,14 +48,16 @@
           result: null,
           // new try:
           calculatorDisplay: "0",
-          displayValue: "0",
+          displayValue: 0,
           isAwaitingInput: false,
           operate: {
             "+": (first, second) => first + second,
             "-": (first, second) => first - second,
             "/": (first, second) => first / second,
             "*": (first, second) => first * second,
-          }
+            "=": (first, second) => first,
+          },
+          operatorValue: "",
         }
       },
       computed: {
@@ -87,8 +89,16 @@
           }
         },
         calculate(operator){
-          this.calculatorDisplay
-          this.displayValue
+          const followingValue = parseFloat(this.calculatorDisplay);
+          if(this.operatorValue && this.isAwaitingInput){
+            this.operatorValue = operator;
+            return;
+          } else {
+            const calculation = this.operate[operator](this.displayValue, followingValue);
+            console.log("calculation", calculation);
+          }
+          this.calculatorDisplay = this.displayValue + operator;
+          this.isAwaitingInput = true;
         },   
       }    
   }
