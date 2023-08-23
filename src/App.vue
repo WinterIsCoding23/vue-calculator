@@ -1,7 +1,7 @@
 <template>
   <div class="calculator">
     <div class="display ">
-      <h1 v-text="calculatorDisplay" class="h-min text-7xl font-light overflow-x-auto rounded-md p-4"></h1>  
+      <h1 v-text="calculatorDisplay || 0" class="h-min text-7xl font-light overflow-x-auto rounded-md p-4"></h1>  
     </div>
     <div class="button-field">
       
@@ -38,7 +38,7 @@
       data() {
         return{
           previous: null,
-          calculatorDisplay: "0",
+          calculatorDisplay: "",
           displayValue: 0,
           isAwaitingInput: false,
           operatorValue: "",
@@ -46,70 +46,83 @@
       },
       methods: {
         displayNumber(number) {
-        if (this.isAwaitingInput) {
-          this.calculatorDisplay = number;
-          this.isAwaitingInput = false;
-        } else {
-          if (this.operatorValue) {
-            this.calculatorDisplay += number; 
-          } else {
-            this.displayValue = this.calculatorDisplay;
-            this.calculatorDisplay = this.displayValue === "0" ? number : this.displayValue + number;
+          if(this.isAwaitingInput){
+            this.calculatorDisplay = "";
+            this.isAwaitingInput = false;
           }
-        }
-        this.displayValue = this.calculatorDisplay;
+          // if (this.isAwaitingInput) {
+          //   this.calculatorDisplay = number;
+          //   this.isAwaitingInput = false;
+          // } else {
+          //   if (this.operatorValue) {
+          //     this.calculatorDisplay += number; 
+          //   } else {
+          //     this.displayValue = this.calculatorDisplay;
+          //     this.calculatorDisplay = this.displayValue === "0" ? number : this.displayValue + number;
+          //   }
+          // }
+          this.calculatorDisplay = `${this.calculatorDisplay}${number}`;
         },
 
-        toggleNegative(){          
-          this.displayValue = (parseFloat(this.displayValue) * -1).toString();
-          this.calculatorDisplay = this.displayValue;
+        toggleNegative(){  
+          this.calculatorDisplay = (parseFloat(this.calculatorDisplay) * -1).toString();       
+          // this.displayValue = (parseFloat(this.displayValue) * -1).toString();
+          // this.calculatorDisplay = this.displayValue;
         },     
         period(){
-          if (this.displayValue.includes(".")){
-            return; 
+          if(this.calculatorDisplay.includes(".")){
+            return;
           } else {
-            this.displayValue = `${this.displayValue}.`;
-            this.calculatorDisplay = this.displayValue;
+            this.calculatorDisplay = `${this.displayValue}.`;
           }
+          // if (this.displayValue.includes(".")){
+          //   return; 
+          // } else {
+          //   this.displayValue = `${this.displayValue}.`;
+          //   this.calculatorDisplay = this.displayValue;
+          // }
         },
         setPrevious(){
-          this.previous = this.displayValue;
-          console.log("previous", this.previous);
-          console.log("previous-displayValue", this.displayValue);
+          this.previous = this.calculatorDisplay;
           this.isAwaitingInput = true;
-          return this.previous;
+          // this.previous = this.displayValue;
+          // console.log("previous", this.previous);
+          // console.log("previous-displayValue", this.displayValue);
+          // this.isAwaitingInput = true;
+          // return this.previous;
         },
         calculate(operator) {
-          if (this.operatorValue && this.isAwaitingInput) {
-            this.operatorValue = operator;
-            return;
-          }
 
-          if (!this.operatorValue) {
-            this.setPrevious(); 
-          } else {
-            const followingValue = parseFloat(this.calculatorDisplay);
+          // if (this.operatorValue && this.isAwaitingInput) {
+          //   this.operatorValue = operator;
+          //   return;
+          // }
+
+          // if (!this.operatorValue) {
+          //   this.setPrevious(); 
+          // } else {
+          //   const followingValue = parseFloat(this.calculatorDisplay);
             
-            switch (this.operatorValue) {
-              case "+":
-                this.displayValue = this.previous + followingValue;
-                console.log("displayValue in switch", this.displayValue);
-                this.setPrevious(); 
-                break;
-              case "-":
-                this.displayValue = this.previous - followingValue;
-                break;
-              case "*":
-                this.displayValue = this.previous * followingValue;
-                break;
-              case "/":
-                this.displayValue = this.previous / followingValue;
-                break;             
-            }
-          }
-          this.operatorValue = operator;
-          this.calculatorDisplay += operator;
-          this.isAwaitingInput = true;
+          //   switch (this.operatorValue) {
+          //     case "+":
+          //       this.displayValue = this.previous + followingValue;
+          //       console.log("displayValue in switch", this.displayValue);
+          //       this.setPrevious(); 
+          //       break;
+          //     case "-":
+          //       this.displayValue = this.previous - followingValue;
+          //       break;
+          //     case "*":
+          //       this.displayValue = this.previous * followingValue;
+          //       break;
+          //     case "/":
+          //       this.displayValue = this.previous / followingValue;
+          //       break;             
+          //   }
+          // }
+          // this.operatorValue = operator;
+          // this.calculatorDisplay += operator;
+          // this.isAwaitingInput = true;
         }
       }
   }    
