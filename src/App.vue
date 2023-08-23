@@ -78,10 +78,12 @@
           this.calculatorDisplay = this.displayValue;
         },     
         period(){
-          this.displayValue = `${this.displayValue}.`;
-          this.calculatorDisplay = this.displayValue;
-          console.log("displayValue", this.displayValue);
-          console.log("calculatorDisplay", this.calculatorDisplay);
+          if (this.displayValue.includes(".")){
+            return 
+          } else {
+            this.displayValue = `${this.displayValue}.`;
+            this.calculatorDisplay = this.displayValue;
+          }
         },   
       }    
   }
