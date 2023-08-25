@@ -49,7 +49,8 @@
       },
       methods: {
         setPrevious(){
-          this.previous = this.calculatorDisplay;
+          // this.previous = this.calculatorDisplay;
+          this.previous = this.current;
         },
 
         displayNumber(number) {
@@ -57,7 +58,7 @@
           if(this.previous){
             this.current = `${this.previous}${number}`;
             this.calculatorDisplay = `${this.previous}${number}`;
-            this.interimResult = Number(this.calculatorDisplay);
+            // this.interimResult = Number(this.calculatorDisplay);
             this.setPrevious();
             // if(operators.includes(this.previous[this.previous.length - 1])){            
             //   for (const operator of operators) {
@@ -85,8 +86,9 @@
             //     this.setPrevious();
             //   }
           } else {
+            this.current = number;
             this.calculatorDisplay = number;
-            this.interimResult = number;
+            this.interimResult = Number(number);
             this.setPrevious();
           }      
           console.log("this.previous after", this.previous);
@@ -100,7 +102,8 @@
           if(this.calculatorDisplay.includes(".")){
             return;
           } else {
-            this.calculatorDisplay = `${this.calculatorDisplay}.`;
+            this.calculatorDisplay = `${this.previous}.`;
+            this.current = `${this.previous}.`;
           }
           this.setPrevious();
         },  
@@ -108,7 +111,7 @@
         add(){
           // this.calculatorDisplay = `${this.previous}${number}`;
           console.log("this.calculatorDisplay", this.calculatorDisplay);
-          this.interimResult = Number(this.interimResult) + Number(this.current);
+          this.interimResult = Number(this.previous) + Number(this.current);
         },
         subtract(){
           // this.calculatorDisplay = `${this.previous}${number}`;
@@ -127,16 +130,17 @@
         },
 
         operate(operator){   
-          // const operators = ["+", "-", "*", "/"];
-          if(!this.previous[this.previous.length - 1].includes(operator)){            
-              // for (const operator of operators) {
-              //   if (this.calculatorDisplay.includes(operator)) {
-              //     this.operatorClicked = operator;
-              //     console.log("operatorClicked", this.operatorClicked);
-              //     break;
-              //   }
-              // }
-              this.operatorClicked = operator;
+          this.previous = this.current;
+          const operators = ["+", "-", "*", "/"];
+          if(!operators.includes(this.previous[this.previous.length - 1])){            
+              for (const operator of operators) {
+                if (this.calculatorDisplay.includes(operator)) {
+                  this.operatorClicked = operator;
+                  console.log("operatorClicked", this.operatorClicked);
+                  break;
+                }
+              }
+
               if (this.operatorClicked === "+") {
                 this.add();
               } else if (this.operatorClicked === "-") {
@@ -146,11 +150,13 @@
               } else if (this.operatorClicked === "/") {
                 this.divide();
               }
+
+                this.calculatorDisplay = `${this.previous}${operator}${this.current}`
                 this.operatorWasClicked = false;
                 this.setPrevious();
-              } else {
-                return;
-              }
+          } else {
+              return;
+          }
 
           // if (!this.operatorWasClicked && this.calculatorDisplay === ""){
           //   console.log("first case");
@@ -179,6 +185,8 @@
         reset(){
           this.calculatorDisplay = "";
           this.interimResult = 0;
+          this.current = "";
+          this.previous = "";
           console.log("calculatorDisplay", this.calculatorDisplay);
           console.log("interimResult", this.interimResult);
         },
