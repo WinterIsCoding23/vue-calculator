@@ -130,6 +130,13 @@
           console.log("interimResult", this.interimResult);
           console.log("calculatorDisplay", this.calculatorDisplay);        
         },
+
+        reset(){
+          this.calculatorDisplay = "";
+          this.interimResult = 0;
+          console.log("calculatorDisplay", this.calculatorDisplay);
+          console.log("interimResult", this.interimResult);
+        },
         
         displayResult(){
           this.calculatorDisplay = this.interimResult;
