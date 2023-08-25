@@ -43,7 +43,7 @@
           operatorWasClicked: false,
           operatorValue: null,
           operatorClicked: null,
-          isAwaitingNumber: true,
+          isAwaitingNumber: false,
         }
       },
       methods: {
@@ -64,26 +64,19 @@
               }
   
               if (this.operatorClicked === "+") {
-                this.calculatorDisplay = `${this.previous}${number}`;
-                console.log("this.calculatorDisplay", this.calculatorDisplay);
-                this.interimResult = Number(this.interimResult) + Number(number);
+                this.add(number);
               } else if (this.operatorClicked === "-") {
-                this.calculatorDisplay = `${this.previous}${number}`;
-                console.log("this.calculatorDisplay", this.calculatorDisplay);
-                this.interimResult = Number(this.interimResult) - Number(number);            
+                this.subtract(number);  
               } else if (this.operatorClicked === "*") {
-                this.calculatorDisplay = `${this.previous}${number}`;
-                console.log("this.calculatorDisplay", this.calculatorDisplay);
-                this.interimResult = Number(this.interimResult) * Number(number);
+                this.multiply(number);
               } else if (this.operatorClicked === "/") {
-                this.calculatorDisplay = `${this.previous}${number}`;
-                console.log("this.calculatorDisplay", this.calculatorDisplay);
-                this.interimResult = number !== 0 ? Number(this.interimResult) / Number(number) : alert("Pendejo!");
+                this.divide(number);
               }
                 this.operatorWasClicked = false;
                 this.setPrevious();
               } else {
                 this.calculatorDisplay = this.previous ? `${this.previous}${number}` : number;
+                this.interimResult = Number(this.calculatorDisplay);
                 this.setPrevious();
               }
           } else {
@@ -105,7 +98,28 @@
             this.calculatorDisplay = `${this.calculatorDisplay}.`;
           }
           this.setPrevious();
-        },   
+        },  
+        
+        add(number){
+          this.calculatorDisplay = `${this.previous}${number}`;
+          console.log("this.calculatorDisplay", this.calculatorDisplay);
+          this.interimResult = Number(this.interimResult) + Number(number);
+        },
+        subtract(number){
+          this.calculatorDisplay = `${this.previous}${number}`;
+          console.log("this.calculatorDisplay", this.calculatorDisplay);
+          this.interimResult = Number(this.interimResult) - Number(number);   
+        },
+        multiply(number){
+          this.calculatorDisplay = `${this.previous}${number}`;
+          console.log("this.calculatorDisplay", this.calculatorDisplay);
+          this.interimResult = Number(this.interimResult) * Number(number);
+        },
+        divide(number){
+          this.calculatorDisplay = `${this.previous}${number}`;
+          console.log("this.calculatorDisplay", this.calculatorDisplay);
+          this.interimResult = number !== 0 ? Number(this.interimResult) / Number(number) : alert("Pendejo!");
+        },
 
         operate(operator){     
           if (!this.operatorWasClicked && this.calculatorDisplay === ""){
