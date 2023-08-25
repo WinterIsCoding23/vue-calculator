@@ -52,47 +52,48 @@
         },
 
         displayNumber(number) {
-          if(this.operatorWasClicked){
-            const operators = ["+", "-", "*", "/"];
-            
-            for (const operator of operators) {
-              if (this.calculatorDisplay.includes(operator)) {
-                this.operatorClicked = operator;
-                console.log("operatorClicked", this.operatorClicked);
-                break;
+          const operators = ["+", "-", "*", "/"];
+          if(this.previous){
+            if(operators.includes(this.previous[this.previous.length - 1])){            
+              for (const operator of operators) {
+                if (this.calculatorDisplay.includes(operator)) {
+                  this.operatorClicked = operator;
+                  console.log("operatorClicked", this.operatorClicked);
+                  break;
+                }
               }
-            }
-
-            if (this.operatorClicked === "+") {
-              this.calculatorDisplay = `${this.previous}${number}`;
-              console.log("this.calculatorDisplay", this.calculatorDisplay);
-              this.interimResult = Number(this.interimResult) + Number(number);
-            } else if (this.operatorClicked === "-") {
-              this.calculatorDisplay = `${this.previous}${number}`;
-              console.log("this.calculatorDisplay", this.calculatorDisplay);
-              this.interimResult = Number(this.interimResult) - Number(number);            
-            } else if (this.operatorClicked === "*") {
-              this.calculatorDisplay = `${this.previous}${number}`;
-              console.log("this.calculatorDisplay", this.calculatorDisplay);
-              this.interimResult = Number(this.interimResult) * Number(number);
-            } else if (this.operatorClicked === "/") {
-              this.calculatorDisplay = `${this.previous}${number}`;
-              console.log("this.calculatorDisplay", this.calculatorDisplay);
-              this.interimResult = number !== 0 ? Number(this.interimResult) / Number(number) : alert("Pendejo!");
-            }
-            this.operatorWasClicked = false;
-            this.setPrevious();
-
-          } else if(!this.operatorWasClicked && this.previous !== null){
-            this.calculatorDisplay = `${this.previous}${number}`;
-            this.setPrevious();
+  
+              if (this.operatorClicked === "+") {
+                this.calculatorDisplay = `${this.previous}${number}`;
+                console.log("this.calculatorDisplay", this.calculatorDisplay);
+                this.interimResult = Number(this.interimResult) + Number(number);
+              } else if (this.operatorClicked === "-") {
+                this.calculatorDisplay = `${this.previous}${number}`;
+                console.log("this.calculatorDisplay", this.calculatorDisplay);
+                this.interimResult = Number(this.interimResult) - Number(number);            
+              } else if (this.operatorClicked === "*") {
+                this.calculatorDisplay = `${this.previous}${number}`;
+                console.log("this.calculatorDisplay", this.calculatorDisplay);
+                this.interimResult = Number(this.interimResult) * Number(number);
+              } else if (this.operatorClicked === "/") {
+                this.calculatorDisplay = `${this.previous}${number}`;
+                console.log("this.calculatorDisplay", this.calculatorDisplay);
+                this.interimResult = number !== 0 ? Number(this.interimResult) / Number(number) : alert("Pendejo!");
+              }
+                this.operatorWasClicked = false;
+                this.setPrevious();
+              } else {
+                this.calculatorDisplay = this.previous ? `${this.previous}${number}` : number;
+                this.setPrevious();
+              }
           } else {
             this.calculatorDisplay = number;
+            this.interimResult = number;
             this.setPrevious();
-          }
+          }      
           console.log("this.previous after", this.previous);
           console.log("this.interimResult", this.interimResult);
-          },
+        },
  
         toggleNegative(){  
           this.calculatorDisplay = (parseFloat(this.calculatorDisplay) * -1).toString();       
