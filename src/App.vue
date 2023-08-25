@@ -92,6 +92,8 @@
           } else {
             this.calculatorDisplay = `${this.calculatorDisplay}.`;
           }
+          this.setPrevious();
+          console.log("this.calculatorDisplay", this.calculatorDisplay);
         },   
 
         add(operator){          
