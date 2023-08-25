@@ -13,7 +13,7 @@
         <button @click="displayNumber('7')" type="button" value="7">7</button>
         <button @click="displayNumber('8')" type="button" value="">8</button>
         <button @click="displayNumber('9')" type="button" value="">9</button>
-        <button @click="add" type="button" class="operator" value="+">+</button>      
+        <button @click="add('+')" type="button" class="operator" value="+">+</button>      
       
         <button @click="displayNumber('4')" type="button" value="">4</button>
         <button @click="displayNumber('5')" type="button" value="">5</button>
@@ -84,7 +84,7 @@
         setPrevious(){
           this.previous = this.calculatorDisplay;
           this.isAwaitingInput = true;
-          return this.previous;
+          // return this.previous;
           // this.previous = this.displayValue;
           // console.log("previous", this.previous);
           // console.log("previous-displayValue", this.displayValue);
@@ -92,10 +92,11 @@
           // return this.previous;
         },
         add(operator){
-          this.calculatorDisplay = `${this.calculatorDisplay}${operator}`;
-          console.log("this.calculatorDisplay before", this.calculatorDisplay);
           this.setPrevious();
-          console.log("this.calculatorDisplay", this.calculatorDisplay);
+          console.log("this.calculatorDisplay before", this.calculatorDisplay);
+          console.log("this.previous before", this.previous);
+          this.calculatorDisplay = `${this.calculatorDisplay}${operator}`;
+          console.log("this.calculatorDisplay after", this.calculatorDisplay);
           this.isAwaitingInput = false;
         }
         // calculate(operator) {
