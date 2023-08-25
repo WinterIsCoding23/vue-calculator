@@ -75,9 +75,13 @@
               this.calculatorDisplay = `${this.previous}${number}`;
               console.log("this.calculatorDisplay", this.calculatorDisplay);
               this.interimResult = Number(this.interimResult) * Number(number);
+            } else if (this.operatorClicked === "/") {
+              this.calculatorDisplay = `${this.previous}${number}`;
+              console.log("this.calculatorDisplay", this.calculatorDisplay);
+              this.interimResult = number !== 0 ? Number(this.interimResult) / Number(number) : alert("Pendejo!");
             }
             this.operatorWasClicked = false;
-          this.setPrevious();
+            this.setPrevious();
 
           } else if(!this.operatorWasClicked && this.previous !== null){
             this.calculatorDisplay = `${this.previous}${number}`;
