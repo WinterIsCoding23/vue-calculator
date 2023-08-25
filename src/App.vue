@@ -51,11 +51,6 @@
         },
 
         displayNumber(number) {
-          console.log("this.previous before", this.previous);          
-          console.log("calculatorDisplay", this.calculatorDisplay);
-          console.log("operatorWasClicked", this.operatorWasClicked);
-          console.log("this.interimResult", this.interimResult);
-
           if(this.operatorWasClicked){
             const operators = ["+", "-", "*", "/"];
             
@@ -100,24 +95,14 @@
         },   
 
         add(operator){          
-          console.log("this.calculatorDisplay before", this.calculatorDisplay);
-          console.log("this.previous before", this.previous);
           this.interimResult = this.calculatorDisplay;
-          console.log("this.interimResult", this.interimResult);
-
           this.calculatorDisplay = `${this.calculatorDisplay}${operator}`;
-          console.log("this.calculatorDisplay after", this.calculatorDisplay);
           this.operatorClicked = operator;
           this.setPrevious();
-          console.log("this.previous after", this.previous);
           this.operatorWasClicked = true;
-          console.log("this.operatorWasClicked", this.operatorWasClicked);
-
         },
         
         calculate(){
-          console.log("this.previous", this.previous);
-          console.log("this.interimResult", this.interimResult);
           this.calculatorDisplay = this.interimResult;
         },
     }
