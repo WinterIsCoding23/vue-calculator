@@ -51,15 +51,39 @@
         setPrevious(){
           // this.previous = this.calculatorDisplay;
           this.previous = this.current;
+          this.current = "";
         },
 
         displayNumber(number) {
-          // const operators = ["+", "-", "*", "/"];
+          const operators = ["+", "-", "*", "/"];
+          console.log("current in displayNumber", this.current);
+          console.log("operatorWasClicked", this.operatorWasClicked);
           if(this.previous){
-            this.current = `${this.previous}${number}`;
-            this.calculatorDisplay = `${this.previous}${number}`;
-            // this.interimResult = Number(this.calculatorDisplay);
-            this.setPrevious();
+            if(this.operatorWasClicked){            
+              for (const operator of operators) {
+                if (this.calculatorDisplay.includes(operator)) {
+                  this.operatorClicked = operator;
+                  console.log("operatorClicked", this.operatorClicked);
+                  break;
+                }
+              }
+              if (this.operatorClicked === "+") {
+                this.current = number;
+                this.interimResult = Number(this.previous)+Number(this.current);
+                console.log("interimResult in displayNumber", this.interimResult);
+              } else if (this.operatorClicked === "-") {
+                this.subtract(number);  
+              } else if (this.operatorClicked === "*") {
+                this.multiply(number);
+              } else if (this.operatorClicked === "/") {
+                this.divide(number);
+              }
+            }
+
+            // this.current = `${this.previous}${number}`;
+            // this.calculatorDisplay = `${this.previous}${number}`;
+            // // this.interimResult = Number(this.calculatorDisplay);
+            // this.setPrevious();
             // if(operators.includes(this.previous[this.previous.length - 1])){            
             //   for (const operator of operators) {
             //     if (this.calculatorDisplay.includes(operator)) {
@@ -89,9 +113,10 @@
             this.current = number;
             this.calculatorDisplay = number;
             this.interimResult = Number(number);
-            this.setPrevious();
+            // this.setPrevious();
           }      
-          console.log("this.previous after", this.previous);
+          console.log("previous displayNumber end", this.previous);
+          console.log("current displayNumber end", this.current);
           console.log("this.interimResult", this.interimResult);
         },
  
@@ -109,9 +134,15 @@
         },  
         
         add(){
-          // this.calculatorDisplay = `${this.previous}${number}`;
+          this.calculatorDisplay = `${this.previous}+`;
           console.log("this.calculatorDisplay", this.calculatorDisplay);
-          this.interimResult = Number(this.previous) + Number(this.current);
+          // this.current = `${this.previous}+`;
+          this.operatorWasClicked = true;
+          this.previous = this.current;
+          this.current = "";
+          console.log("current in add", this.current);
+          console.log("previous in add", this.previous);
+          // this.interimResult = Number(this.previous) + Number(this.current);
         },
         subtract(){
           // this.calculatorDisplay = `${this.previous}${number}`;
@@ -129,20 +160,24 @@
           this.interimResult = this.current !== 0 ? Number(this.interimResult) / Number(this.current) : alert("Pendejo!");
         },
 
-        operate(operator){   
-          this.previous = this.current;
+        operate(operator){  
+          console.log("current", this.current); 
           const operators = ["+", "-", "*", "/"];
-          if(!operators.includes(this.previous[this.previous.length - 1])){            
-              for (const operator of operators) {
-                if (this.calculatorDisplay.includes(operator)) {
-                  this.operatorClicked = operator;
-                  console.log("operatorClicked", this.operatorClicked);
-                  break;
-                }
-              }
+          if(!operators.includes(this.calculatorDisplay[this.calculatorDisplay.length - 1])){            
+              // for (const operator of operators) {
+              //   if (this.calculatorDisplay.includes(operator)) {
+              //     this.operatorClicked = operator;
+              //     console.log("operatorClicked", this.operatorClicked);
+              //     break;
+              //   }
+              // }
 
-              if (this.operatorClicked === "+") {
-                this.add();
+              if (operator === "+") {
+                this.previous = this.current;
+                this.calculatorDisplay = `${this.current}${operator}`;  
+                this.operatorWasClicked = true;
+                console.log("previous in operate", this.previous);
+                console.log("current in operate", this.current);
               } else if (this.operatorClicked === "-") {
                 this.subtract();  
               } else if (this.operatorClicked === "*") {
@@ -151,9 +186,12 @@
                 this.divide();
               }
 
-                this.calculatorDisplay = `${this.previous}${operator}${this.current}`
+                // this.calculatorDisplay = `${this.previous}${operator}${this.current}`
                 this.operatorWasClicked = false;
-                this.setPrevious();
+                // this.setPrevious();
+                // console.log("previous in operate", this.previous);
+                // console.log("current in operate", this.current);
+
           } else {
               return;
           }
@@ -187,12 +225,14 @@
           this.interimResult = 0;
           this.current = "";
           this.previous = "";
+          this.operatorWasClicked = false;
           console.log("calculatorDisplay", this.calculatorDisplay);
           console.log("interimResult", this.interimResult);
         },
         
         displayResult(){
           this.calculatorDisplay = this.interimResult;
+          this.operatorWasClicked = false;
         },
     }
   }    
