@@ -55,6 +55,7 @@
         displayNumber(number) {
           // const operators = ["+", "-", "*", "/"];
           if(this.previous){
+            this.current = `${this.previous}${number}`;
             this.calculatorDisplay = `${this.previous}${number}`;
             this.interimResult = Number(this.calculatorDisplay);
             this.setPrevious();
@@ -114,7 +115,7 @@
           console.log("this.calculatorDisplay", this.calculatorDisplay);
           this.interimResult = Number(this.interimResult) - Number(this.current);   
         },
-        multiply(nmber){
+        multiply(){
           // this.calculatorDisplay = `${this.previous}${number}`;
           console.log("this.calculatorDisplay", this.calculatorDisplay);
           this.interimResult = Number(this.interimResult) * Number(this.current);
@@ -137,13 +138,13 @@
               // }
               this.operatorClicked = operator;
               if (this.operatorClicked === "+") {
-                this.add(number);
+                this.add();
               } else if (this.operatorClicked === "-") {
-                this.subtract(number);  
+                this.subtract();  
               } else if (this.operatorClicked === "*") {
-                this.multiply(number);
+                this.multiply();
               } else if (this.operatorClicked === "/") {
-                this.divide(number);
+                this.divide();
               }
                 this.operatorWasClicked = false;
                 this.setPrevious();
