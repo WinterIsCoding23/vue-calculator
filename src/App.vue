@@ -76,6 +76,7 @@
               console.log("this.calculatorDisplay", this.calculatorDisplay);
               this.interimResult = Number(this.interimResult) * Number(number);
             }
+            this.operatorWasClicked = false;
           this.setPrevious();
 
           } else if(!this.operatorWasClicked && this.previous !== null){
