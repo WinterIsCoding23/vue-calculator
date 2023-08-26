@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    box-sizing: border-box;     
+}
+
+body{
+    @apply m-0 min-h-screen bg-sky-900 text-gray-50 flex flex-col justify-center items-center
+}
+
+.calculator{
+    @apply w-[400px] h-[600px] border-2 border-teal-600 rounded-md flex flex-col bg-emerald-700
+}
+
+.display{
+    @apply max-w-full min-h-[200px] bg-black border-solid border-2 border-indigo-500/50 rounded-md m-0 p-4 flex justify-end items-center
+}
+
+.button-field{
+    @apply text-slate-950 p-4 grid grid-rows-5 grid-cols-4 gap-4 grow
+}
+
+.operator{
+  @apply text-white bg-slate-700
+}
+
+/* Display-Scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  button {
+    @apply min-h-[50px] border-2 border-emerald-600 rounded-md bg-amber-600 shadow-xl hover:brightness-75 active:-translate-y-1
+  }
