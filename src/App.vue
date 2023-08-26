@@ -41,11 +41,6 @@
           current: "",
           operatorWasClicked: false,
           operator: null,
-          calculatorDisplay: "",
-          interimResult: 0,
-          operatorValue: null,
-          operatorClicked: null,
-          isAwaitingNumber: false,
         }
       },
       methods: {
@@ -87,13 +82,7 @@
           this.setPrevious();
         },
         reset(){
-          this.calculatorDisplay = "";
-          this.interimResult = 0;
           this.current = "";
-          this.previous = "";
-          this.operatorWasClicked = false;
-          console.log("calculatorDisplay", this.calculatorDisplay);
-          console.log("interimResult", this.interimResult);
         },        
         displayResult(){
           this.current = `${this.operator(parseFloat(this.previous), parseFloat(this.current))}`;
