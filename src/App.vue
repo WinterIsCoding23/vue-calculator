@@ -85,7 +85,7 @@
           this.current = "";
         },        
         displayResult(){
-          this.current = `${this.operator(parseFloat(this.previous), parseFloat(this.current))}`;
+          this.current = this.previous ? `${this.operator(parseFloat(this.previous), parseFloat(this.current))}` : this.current;
           this.previous = null;
         },
     }
