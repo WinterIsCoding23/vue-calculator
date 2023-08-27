@@ -7,23 +7,23 @@
 }
 
 body{
-    @apply m-0 min-h-screen bg-sky-900 text-gray-50 flex flex-col justify-center items-center
+    @apply m-0 min-h-screen bg-[#FFE17B] dark:bg-sky-900 text-gray-50 flex flex-col justify-center items-center
 }
 
 .calculator{
-    @apply w-[400px] h-[600px] border-2 border-teal-600 rounded-md flex flex-col bg-emerald-700
+    @apply w-[250px] h-[450px] tiny:mx-6 tiny:w-[300px] tiny:h-[450px] sm:w-[400px] sm:h-[600px] md:my-6 md:w-[500px] md:h-[800px] border-2 border-[#a7bd59] dark:border-teal-600 rounded-md flex flex-col bg-[#CECE5A] dark:bg-emerald-700
 }
 
 .display{
-    @apply max-w-full min-h-[200px] bg-black border-solid border-2 border-indigo-500/50 rounded-md m-0 p-4 flex justify-end items-center
+    @apply max-w-full tiny:min-h-[80px] sm:min-h-[200px] bg-black border-solid border-2 border-indigo-500/50 rounded-md m-0 p-4 flex justify-end items-center
 }
 
 .button-field{
-    @apply text-slate-950 p-4 grid grid-rows-5 grid-cols-4 gap-4 grow
+    @apply sm:font-bold md:text-3xl text-slate-600 dark:text-slate-950 p-4 grid grid-rows-5 grid-cols-4 gap-4 grow
 }
 
 .operator{
-  @apply text-white bg-slate-700
+  @apply bg-[#FD8D14] dark:text-white dark:bg-slate-700
 }
 
 /* Display-Scrollbar */
@@ -44,5 +44,5 @@ body{
   }
 
   button {
-    @apply min-h-[50px] border-2 border-emerald-600 rounded-md bg-amber-600 shadow-xl hover:brightness-75 active:-translate-y-1
+    @apply min-h-[50px] border-2 dark:border-emerald-600 rounded-md dark:bg-amber-600 shadow-xl hover:brightness-75 active:-translate-y-1
   }

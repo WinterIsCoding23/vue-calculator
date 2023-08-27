@@ -1,7 +1,7 @@
 <template>
   <div class="calculator">
     <div class="display ">
-      <h1 v-text="current || 0" class="h-min text-7xl font-light overflow-x-auto rounded-md p-4"></h1>  
+      <h1 v-text="current || 0" class="h-min text-3xl tiny:text-4xl sm:text-7xl font-light overflow-x-auto rounded-md p-4"></h1>  
     </div>
     <div class="button-field">
       
@@ -23,7 +23,7 @@
         <button @click="displayNumber('1')" type="button" value="">1</button>
         <button @click="displayNumber('2')" type="button" value="">2</button>
         <button @click="displayNumber('3')" type="button" value="">3</button>
-        <button @click="displayResult" type="button" class="min-h-[50px] row-span-2 border-2 border-orange-600 rounded-md bg-red-600 text-white" value="">=</button>      
+        <button @click="displayResult" type="button" class="min-h-[50px] row-span-2 border-2 border-orange-600 rounded-md bg-[#C51605] dark:bg-red-600 text-white" value="">=</button>      
       
         <button @click="displayNumber('0')" type="button" value="">0</button>
         <button @click="toggleNegative" type="button" class="button" value="">+/-</button>
@@ -85,7 +85,7 @@
           this.current = "";
         },        
         displayResult(){
-          this.current = `${this.operator(parseFloat(this.previous), parseFloat(this.current))}`;
+          this.current = this.previous ? `${this.operator(parseFloat(this.previous), parseFloat(this.current))}` : this.current;
           this.previous = null;
         },
     }
