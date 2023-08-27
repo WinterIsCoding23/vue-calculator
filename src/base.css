@@ -11,7 +11,7 @@ body{
 }
 
 .calculator{
-    @apply tiny:w-[300px] tiny:h-[450px] sm:w-[400px] sm:h-[600px] border-2 border-teal-600 rounded-md flex flex-col bg-emerald-700
+    @apply w-[250px] h-[450px] tiny:w-[300px] tiny:h-[450px] sm:w-[400px] sm:h-[600px] md:w-[500px] md:h-[800px] border-2 border-teal-600 rounded-md flex flex-col bg-emerald-700
 }
 
 .display{
@@ -19,7 +19,7 @@ body{
 }
 
 .button-field{
-    @apply text-slate-950 p-4 grid grid-rows-5 grid-cols-4 gap-4 grow
+    @apply sm:font-bold md:text-3xl text-slate-950 p-4 grid grid-rows-5 grid-cols-4 gap-4 grow
 }
 
 .operator{

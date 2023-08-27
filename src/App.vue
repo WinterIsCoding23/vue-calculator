@@ -1,7 +1,7 @@
 <template>
   <div class="calculator">
     <div class="display ">
-      <h1 v-text="current || 0" class="h-min tiny:text-5xl text-7xl font-light overflow-x-auto rounded-md p-4"></h1>  
+      <h1 v-text="current || 0" class="h-min text-3xl tiny:text-4xl sm:text-7xl font-light overflow-x-auto rounded-md p-4"></h1>  
     </div>
     <div class="button-field">
       
