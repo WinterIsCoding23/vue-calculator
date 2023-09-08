@@ -44,7 +44,22 @@
         }
       },
       methods: {
+        formatWithCommas(numberString) {
+          const parts = numberString.split(".");
+          let integerPart = parts[0] || "";
+          const decimalPart = parts[1] || "";
+
+          if (integerPart.charAt(0) === "-") {
+            integerPart = "-" + integerPart.slice(1).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          } else {
+            integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          }
+
+          return integerPart + (decimalPart ? "." + decimalPart : "");
+        },
+
         setPrevious(){
+          this.current = this.current.replace(/,/g, '');
           this.previous = this.current;
           this.operatorWasClicked = true;  
         },
@@ -53,7 +68,9 @@
             this.current = "";
             this.operatorWasClicked = false;
           }
+          this.current = this.current.replace(/,/g, '');
           this.current = `${this.current}${number}`;
+          this.current = this.formatWithCommas(this.current);
         }, 
         toggleNegative(){  
           this.current = (parseFloat(this.current) * -1).toString();       
@@ -86,6 +103,7 @@
         },        
         displayResult(){
           this.current = this.previous ? `${this.operator(parseFloat(this.previous), parseFloat(this.current))}` : this.current;
+          this.current = this.formatWithCommas(this.current);
           this.previous = null;
         },
     }
